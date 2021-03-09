@@ -5,7 +5,14 @@ public class Rotate {
     public static void main(String[] args) {
         new Rotate().solution(new int[]{-1,-100,3,99}, 2);
     }
-    public void solution(int[] nums, int k) {
+
+    // O(k) extra space
+    /**
+     * From Leetcode -> Success - Details
+     * Runtime: 0 ms, faster than 100.00% of Java online submissions for Rotate Array.
+     * Memory Usage: 39.3 MB, less than 90.23% of Java online submissions for Rotate Array.
+     */
+    public void solutionWithExtraSpace(int[] nums, int k) {
 
         final int length = nums.length;
         k = k%length;
