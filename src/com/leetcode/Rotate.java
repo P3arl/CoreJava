@@ -3,7 +3,7 @@ package com.leetcode;
 public class Rotate {
 
     public static void main(String[] args) {
-        new Rotate().solution(new int[]{-1,-100,3,99}, 2);
+        new Rotate().solutionInSpace(new int[]{1,2,3,4,5,6,7}, 3);
     }
 
     // O(k) extra space
@@ -28,5 +28,28 @@ public class Rotate {
         }
 
         if (a.length > 0) System.arraycopy(a, 0, nums, 0, a.length);
+    }
+
+    public void solutionInSpace(int[] nums, int k) {
+        if(nums.length == 1 || k == 0) {
+            return;
+        }
+        final int length = nums.length;
+        k = k % length;
+        reverse(nums, 0, length);
+        reverse(nums, 0, k);
+        reverse(nums, k, length);
+    }
+
+    private void reverse(int[] a, int start, int end) {
+
+        int t;
+        final int mid = (start + end)/2;
+        for (int i = start; i < mid; i++) {
+            t = a[i];
+            final int endIndex = end - 1 - i + start;
+            a[i] = a[endIndex];
+            a[endIndex] = t;
+        }
     }
 }
